@@ -14,6 +14,7 @@ async function listarProduto(){
                 <td><img src="${products.image}" alt=""></td>
                 <td>${products.rating.rate}</td>
                 <td><button id="btnExcluir" type="button" onclick="clicou('${products.id}', '${products.title}')" value=${products.id} class="btn btn-danger">x</button></td>
+                <td><button id="btnEditar" type="button" onclick="clicou2('${products.id}', '${products.title}', '${products.price}', '${products.category}', '${products.image}', '${products.rating.rate}')" value=${products.id} class="btn btn-primary">E</button></td>
                 
             </tr>
             `
@@ -74,5 +75,15 @@ function clicou(idProduto, nomeProduto){
         })
     }
     console.log(confirmado)
+}
 
+function clicou2(id, title, price, category, image, rate){
+    new bootstrap.Modal("#form-produto-update").show();
+    
+        console.log(id)
+        document.getElementById('title-update').value = title
+        document.getElementById('price-update').value = price
+        document.getElementById('category-update').value = category
+        document.getElementById('image-update').value = image
+        document.getElementById('rating-update').value = rate
 }

@@ -11,6 +11,14 @@
       img{
         height: 80px;
       }
+
+      img{
+        background-color: white;
+        border: transparent;
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
     </style>
 </head>
 <body>
@@ -52,7 +60,7 @@
       </div>
     </main>
 
-  <!-- Modal -->
+  <!-- Modal Inserir -->
   <div class="modal fade" id="form-produto" tabindex="-1" aria-labelledby="form-produto-label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -91,6 +99,44 @@
       </div>
     </div>
   </div>
-
+<!-- Modal Editar -->
+  <div class="modal fade" id="form-produto-update" tabindex="-1" aria-labelledby="form-produto-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="form-produto-label">Novo Produto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-new-product">
+            <div class="mb-3">
+             <label for="title" class="form-label"> Nome do Produto</label>
+             <input type="text" class="form-control" id="title-update">
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Preço</label>
+              <input type="number" class="form-control" id="price-update">
+             </div>
+             <div class="mb-3">
+              <label for="category" class="form-label">Categoria</label>
+              <input type="text" class="form-control" id="category-update">
+             </div>
+             <div class="mb-3">
+              <label for="image" class="form-label">Link da Foto</label>
+              <input type="text" class="form-control" id="image-update">
+             </div>
+             <div class="mb-3">
+              <label for="rating" class="form-label">Avaliação</label>
+              <input type="number" class="form-control" id="rating-update" min="1" max="5" placeholder="1 até 5">
+             </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" form="form-new-product" class="btn btn-primary">Atualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

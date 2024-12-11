@@ -19,6 +19,16 @@
       "rating": {
         "rate": "5"
       }
+    },
+    {
+      "id": "5efa",
+      "title": "IPHONE 14",
+      "price": "4000",
+      "category": "CELULAR",
+      "image": "https://d1p6nzzdute2g.cloudfront.net/lojas/loja-1517/bb3e61aa-5b8f-464a-be6d-62c01abb1eee",
+      "rating": {
+        "rate": "4"
+      }
     }
   ]
 }
