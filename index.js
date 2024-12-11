@@ -11,10 +11,13 @@ async function listarProduto(){
                 <td>${products.title}</td>
                 <td>${products.price}</td>
                 <td>${products.category}</td>
-                <td><img src="${products.image}" alt=""></td>
+                <td><img id="imgProduto" src="${products.image}" alt=""></td>
                 <td>${products.rating.rate}</td>
-                <td><button id="btnExcluir" type="button" onclick="clicou('${products.id}', '${products.title}')" value=${products.id} class="btn btn-danger">x</button></td>
-                <td><button id="btnEditar" type="button" onclick="clicou2('${products.id}', '${products.title}', '${products.price}', '${products.category}', '${products.image}', '${products.rating.rate}')" value=${products.id} class="btn btn-primary">E</button></td>
+                <td>
+                    <button id="btnExcluir" type="button" onclick="clicou('${products.id}', '${products.title}')" value=${products.id} class="btn btn-danger">x</button>
+                    <button id="btnEditar" type="button" onclick="clicou2('${products.id}', '${products.title}', '${products.price}', '${products.category}', '${products.image}', '${products.rating.rate}')" value=${products.id} class="btn btn-primary"><img id="imgEditar"src="pencil-simple.svg" alt=""></button>    
+                </td>
+                
                 
             </tr>
             `
@@ -77,13 +80,86 @@ function clicou(idProduto, nomeProduto){
     console.log(confirmado)
 }
 
-function clicou2(id, title, price, category, image, rate){
-    new bootstrap.Modal("#form-produto-update").show();
+// function clicou2(id, title, price, category, image, rate){
+//     new bootstrap.Modal("#form-produto-update").show();
+
     
-        console.log(id)
-        document.getElementById('title-update').value = title
-        document.getElementById('price-update').value = price
-        document.getElementById('category-update').value = category
-        document.getElementById('image-update').value = image
-        document.getElementById('rating-update').value = rate
+    
+//         document.getElementById('form-new-product-update').onsubmit = async (e) => {
+//             e.preventDefault()
+
+//             const product = {
+//                 id: id,
+//                 title: document.getElementById('title-update').value = title,
+//                 price: document.getElementById('price-update').value = price,
+//                 category: document.getElementById('category-update').value = category,
+//                 image: document.getElementById('image-update').value = image,
+//                 rating: {
+//                    rate: document.getElementById('rating-update').value = rate
+//                  },
+//             }
+//             updateProduct(product)
+//         }
+// }
+
+// async function updateProduct(product){
+//     console.log(product)
+//     try {  
+//        await fetch('http://localhost:3000/post'),{
+//             method:"PUT",
+//             body:JSON.stringify(product)
+//         }
+        
+//         } catch (error) {
+//             console.log(error)
+//         }
+    
+// }
+function clicou2(id, title, price, category, image, rate) {
+    // Exibe o modal para atualização do produto
+    new bootstrap.Modal("#form-produto-update").show();
+
+    // Preenche os campos do formulário com os dados do produto
+    document.getElementById('title-update').value = title;
+    document.getElementById('price-update').value = price;
+    document.getElementById('category-update').value = category;
+    document.getElementById('image-update').value = image;
+    document.getElementById('rating-update').value = rate;
+
+    // Configura o envio do formulário
+    document.getElementById('form-new-product-update').onsubmit = async (e) => {
+        e.preventDefault();
+
+        // Criação do objeto produto com os dados preenchidos no formulário
+        const product = {
+            title: document.getElementById('title-update').value,
+            price: document.getElementById('price-update').value,
+            category: document.getElementById('category-update').value,
+            image: document.getElementById('image-update').value,
+            rating: {
+                rate: document.getElementById('rating-update').value
+            }
+        };
+
+        // Chama a função para atualizar o produto
+        await updateProduct(id, product);
+    };
+}
+
+async function updateProduct(id, product) {
+    try {
+        // Faz a requisição para o backend para atualizar o produto
+        const response = await fetch(`http://localhost:3000/post/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(product)
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao atualizar produto');
+        }
+
+        console.log('Produto atualizado com sucesso');
+    } catch (error) {
+        console.error('Erro:', error);
+    }
 }
