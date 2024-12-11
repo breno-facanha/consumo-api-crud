@@ -1,0 +1,24 @@
+{
+  "post": [
+    {
+      "id": "835d",
+      "title": "IPHONE 13",
+      "price": "3000",
+      "category": "CELULAR",
+      "image": "https://d1p6nzzdute2g.cloudfront.net/lojas/loja-1517/bb3e61aa-5b8f-464a-be6d-62c01abb1eee",
+      "rating": {
+        "rate": "3"
+      }
+    },
+    {
+      "id": "0456",
+      "title": "IPHONE 15",
+      "price": "5000",
+      "category": "CELULAR",
+      "image": "https://d1p6nzzdute2g.cloudfront.net/lojas/loja-1517/bb3e61aa-5b8f-464a-be6d-62c01abb1eee",
+      "rating": {
+        "rate": "5"
+      }
+    }
+  ]
+}
